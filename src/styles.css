@@ -78,15 +78,15 @@
 }
 
 .banner-item.large {
-  flex: 1 1 50%; /* Adjusted to make large images smaller */
+  flex: 1 1 50%; 
 }
 
 .banner-item.medium {
-  flex: 1 1 28%; /* Adjusted to make medium images smaller */
+  flex: 1 1 28%; 
 }
 
 .banner-item.small {
-  flex: 1 1 1%; /* Adjusted to make small images smaller */
+  flex: 1 1 1%; 
 }
 
 .banner-item:hover img {
@@ -111,8 +111,7 @@
 
 .banner-info h2 {
   margin: 5px 0;
-  font-size: 20px; /* Adjusted to make the text smaller */
-}
+  font-size: 20px; }
 
 .banner-info a {
   color: #fff;
@@ -368,6 +367,46 @@ body {
       width: 90%;
     }
   }
+  .featured-posts {
+    padding: 20px;
+  }
+  
+  .featured-posts h2 {
+    text-align: center;
+  }
+
+  .posts-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .post {
+    flex: 1 1 calc(33.333% - 20px);
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .post img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .post h3 {
+    margin: 10px 0;
+  }
+  
+  .post p {
+    margin: 10px 0;
+  }
+  
+  .post .post-date {
+    font-size: 0.8em;
+    color: #999;
+  }
   footer {
     background-color: white;
     color: black;
@@ -442,6 +481,14 @@ body {
       width: 100%;
       margin: 10px 0;
     }
+    .posts-list {
+      flex-direction: column;
+    }
+  
+    .post {
+      flex: 1 1 100%;
+    }
+  
 }
 .product-details {
   display: flex;

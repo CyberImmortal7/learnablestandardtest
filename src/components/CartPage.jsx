@@ -1,20 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import './CartPage.css';
 import master from '../assets/mastercard.png';
 import visa from '../assets/visa.png';
 import pay from '../assets/paystack.png';
+// import fallbackImage from '../assets/fallback-image.png';
 import { incrementQuantity, decrementQuantity, removeItem, loadFromLocalStorage } from '../features/cartSlice';
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const dispatch = useDispatch();
+  const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
     dispatch(loadFromLocalStorage());
+    fetchRelatedProducts();
   }, [dispatch]);
+
+  const fetchRelatedProducts = async () => {
+    try {
+      const response = await fetch('https://dummyjson.com/docs/products');
+      const data = await response.json();
+      console.log('Related Products:', data);  
+      setRelatedProducts(data);
+    } catch (error) {
+      console.error('Error fetching related products:', error);
+    }
+  };
 
   return (
     <div className="cart-page">
@@ -26,7 +40,6 @@ const CartPage = () => {
           <div className="promo-info">
             <p>Follow Us and get a chance to win 80% off</p>
           </div>
-         
         </div>
         <div className="header-bottom">
           <h1>Bandage</h1>
@@ -58,7 +71,7 @@ const CartPage = () => {
           </div>
           {cartItems.map((item) => (
             <div key={item.id} className="cart-item">
-              <img src={item.image} alt={item.title} className="cart-item-image" />
+              <img src={item.image} alt={item.title} className="cart-item-image" onError={(e) => e.target.src = fallbackImage} />
               <div className="item-details">
                 <h2>{item.title}</h2>
                 <p>{item.availabilityStatus}</p>
@@ -93,8 +106,24 @@ const CartPage = () => {
           </div>
         </div>
       </div>
-      <section className='related-items'>
 
+      <section className="related-items">
+        <h2>Products Related to Items in Your Cart</h2>
+        <div className="related-items-list">
+          {relatedProducts.map((product) => (
+            <div key={product.id} className="related-item">
+              <img src={product.image} alt={product.title} className="related-item-image" onError={(e) => e.target.src = fallbackImage} />
+              <div className="related-item-details">
+                <h3>{product.title}</h3>
+                <p>{product.department}</p>
+                <p className="related-item-price">
+                  <span className="original-price">${product.price.toFixed(2)}</span> 
+                  <span className="discounted-price">${product.discountedPrice.toFixed(2)}</span>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <footer>

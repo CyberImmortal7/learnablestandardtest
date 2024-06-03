@@ -6,13 +6,17 @@ import '../styles.css';
 import book from '../assets/book.svg';
 import open from '../assets/open.png';
 import chart from '../assets/chart.png';
-import feat from '../assets/featured-posts.png';
 import review from '../assets/testimonial.png';
 import buzz from '../assets/call.png';
 import cartpic from '../assets/cartlogo.png';
 import div from '../assets/div.png';
 import login from '../assets/loginlogo.png';
 import mail from '../assets/maillogo.png';
+import feat1 from '../assets/featprod1.png';
+import feat2 from '../assets/feadprod2.png';
+import feat3 from '../assets/featprod3.png';
+
+
 
 const AllProductsSection = () => {
   const [page, setPage] = useState(1);
@@ -117,7 +121,30 @@ const AllProductsSection = () => {
       </section>
 
       <section className="featured-posts">
-        <img src={feat} alt="Featured Posts" />
+        <h2>Featured Posts</h2>
+        <div className="posts-list">
+          <div className="post">
+            <img src={feat1} alt="Post 1" />
+            <h3>Loudest in La Madison #1</h3>
+            <p>We focus on ergonomics and meeting you where you work. It's only a keystroke away.</p>
+            <Link to="/post/1">Learn More</Link>
+            <p className="post-date">22 April 2021</p>
+          </div>
+          <div className="post">
+            <img src={feat2} alt="Post 2" />
+            <h3>Loudest in La Madison #1</h3>
+            <p>We focus on ergonomics and meeting you where you work. It's only a keystroke away.</p>
+            <Link to="/post/2">Learn More</Link>
+            <p className="post-date">22 April 2021</p>
+          </div>
+          <div className="post">
+            <img src={feat3} alt="Post 3" />
+            <h3>Loudest in La Madison #1</h3>
+            <p>We focus on ergonomics and meeting you where you work. It's only a keystroke away.</p>
+            <Link to="/post/3">Learn More</Link>
+            <p className="post-date">22 April 2021</p>
+          </div>
+        </div>
       </section>
 
       <section className="they-say">
