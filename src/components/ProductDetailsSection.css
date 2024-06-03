@@ -329,3 +329,31 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
+@media (max-width: 768px) {
+  .header-bottom nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .product-main-info {
+    flex-direction: column;
+  }
+
+  .thumbnail-container {
+    justify-content: center;
+  }
+
+  .product-summary {
+    text-align: center;
+  }
+
+  .tabs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
